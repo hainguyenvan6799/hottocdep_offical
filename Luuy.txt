@@ -6,3 +6,6 @@ NEXMO_SECRET=JQ1mvfEmPZaGiN8X
 NEXMO_KEY=fdcdea23
 NEXMO_SECRET=sZVUpf56shf5IqgK(mới)
 
+https://www.youtube.com/watch?v=skGZ8laUQco&list=WL&index=2&t=9s upload heroku
+
+
