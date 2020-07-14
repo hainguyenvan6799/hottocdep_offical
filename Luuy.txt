@@ -1,0 +1,8 @@
+https://viblo.asia/p/su-dung-nexmo-service-xac-thuc-tai-khoan-vyDZOWOkZwj
+
+NEXMO_KEY=7b3b2e75
+NEXMO_SECRET=JQ1mvfEmPZaGiN8X
+
+NEXMO_KEY=fdcdea23
+NEXMO_SECRET=sZVUpf56shf5IqgK(mới)
+

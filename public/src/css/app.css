@@ -1,0 +1,12 @@
+.thumbnail{
+			border: 1px solid gray;
+			padding: 10px;
+		}
+.price{
+	float: right;
+	font-size: 17px;
+	font-weight: bold;
+}
+.thumbnail img{
+	max-height: 300px;
+}
