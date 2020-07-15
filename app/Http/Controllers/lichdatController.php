@@ -81,7 +81,7 @@ class lichdatController extends Controller
         $arr1 = str_split((string)$lichdat->id);
         $arr2 = str_split($lichdat->dichvu->tendichvu_khongdau);
         $arr3 = str_split((string)$lichdat->sdt);
-        $lichdat->malichdat = $arr1[0] . $arr2[0] . $arr2[count($arr2)-1] . $arr1[1] .$arr3[count($arr3)-2] . $arr3[count($arr3)-1];
+        $lichdat->malichdat = $arr2[0] . $arr2[count($arr2)-1] .$arr3[count($arr3)-2] . $arr3[count($arr3)-1];
         $lichdat->save();
 
         if($lichdat->thanhtoan == 1) // thanh toán tại cửa hàng.
@@ -207,7 +207,7 @@ class lichdatController extends Controller
         echo '<script>
         alert("Bạn đã hủy lịch.");
         window.setTimeout(function(){
-            window.location.href="http://localhost:88/HotToc/public/index"; 
+            window.location.href="https://hottocdep.herokuapp.com"; 
         }, 3000);</script>';
     }
     //xem lại chỗ này
