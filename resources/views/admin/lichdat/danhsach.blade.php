@@ -18,7 +18,7 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
-                                <th>ID</th>
+                                <th>Mã lịch đặt</th>
                                 <th>Tên nhân viên</th>
                                 <th>Tên khách hàng</th>
                                 <th>Tên dịch vụ</th>
@@ -35,7 +35,7 @@
                         <tbody>
                             @foreach($lichdat as $ld)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$ld->id}}</td>
+                                <td>{{$ld->malichdat}}</td>
                                 <td>{{$ld->nhanvien->user->name}}</td>
                                 <td>{{$ld->tenkhachhang}}</td>
                                 <td>{{$ld->dichvu->tendichvu}}</td>
