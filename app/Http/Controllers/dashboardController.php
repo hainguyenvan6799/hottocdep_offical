@@ -34,5 +34,5 @@ class dashboardController extends Controller
 	                    window.location.href="../lichdat/danhsach";
 	                }, 3000);	
     			</script>';
-        }
+    }
 }

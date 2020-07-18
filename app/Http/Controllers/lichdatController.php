@@ -78,10 +78,11 @@ class lichdatController extends Controller
         $lichdat->thanhtoan = $request->hinhthucthanhtoan;
         $lichdat->save();
 
-        $arr1 = str_split((string)$lichdat->id);
-        $arr2 = str_split($lichdat->dichvu->tendichvu_khongdau);
-        $arr3 = str_split((string)$lichdat->sdt);
-        $lichdat->malichdat = $arr2[0] . $arr2[count($arr2)-1] .$arr3[count($arr3)-2] . $arr3[count($arr3)-1];
+        $lichdat->malichdat = rand(1000,9999);
+        while(LichDat::where('malichdat', $lichdat->malichdat)->get()->toArray()){
+            $lichdat->malichdat = rand(1000,9999);
+        }
+        
         $lichdat->save();
 
         if($lichdat->thanhtoan == 1) // thanh toán tại cửa hàng.

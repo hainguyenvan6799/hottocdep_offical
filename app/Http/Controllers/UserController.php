@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Loaidichvu;
+use App\LichDat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use Exception;
+
 
 class UserController extends Controller
 {
@@ -146,6 +148,29 @@ class UserController extends Controller
 		}
 		User::destroy($id);
 		return redirect('admin/user/danhsach')->with('thongbao','Xóa người dùng thành công.');
+	}
+	public function huykhoataikhoan(){
+		return view('admin.users.huykhoataikhoan');
+	}
+	public function postHuykhoataikhoan(Request $request){
+		//kiểm tra có tồn tại email đó trong bảng users
+		if(!User::where('email', $request->email)->get()->toArray())
+		{
+			return redirect()->route('huykhoataikhoan')->with('thongbao', 'Email không tồn tại.');
+		}
+		else
+		{
+			$solanhuy = count(LichDat::where('email',$request->email)->where('khhuydon', 1)->get());
+			if($solanhuy < 2)
+			{
+				return redirect()->route('huykhoataikhoan')->with('thongbao','Tài khoản đã hủy ' . $solanhuy .' lần.');
+			}
+			else
+			{
+				LichDat::where('email', $request->email)->delete();
+				return redirect()->route('huykhoataikhoan')->with('thongbao', 'Đã mở khóa tài khoản ' .$request->email);
+			}
+		}
 	}
 	// public function test(){
 	// 	$loaidv = Loaidichvu::find(1)->get();

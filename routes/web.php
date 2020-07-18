@@ -165,6 +165,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		Route::post('sua/{iduser}', 'UserController@postSua');
 
 		Route::get('xoa/{id}' , 'UserController@getXoa');
+
+		Route::get('huykhoataikhoan', 'UserController@huykhoataikhoan')->name('huykhoataikhoan');
+		Route::post('huykhoataikhoan', 'UserController@postHuykhoataikhoan')->name('postHuykhoataikhoan');
 	});
 
 	Route::group(['prefix'=>'loaisanpham'], function(){
@@ -239,6 +242,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		Route::get('sua/{id}', 'khachhangController@getSua');
 		// Route::post('sua/{id}', 'khachhangController@postSua');
 	});
+
+	// Route::('taikhoan/huykhoa', 'dashboardController@huykhoa')->name('taikhoan/huykhoa');
 
 
 
