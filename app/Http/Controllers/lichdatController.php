@@ -7,6 +7,7 @@ use App\NhanVien;
 use App\LichDat;
 use App\Dichvu;
 use App\Loaidichvu;
+use App\Mail;
 use App\lichlamviec_nhanvien;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CalendarController;
