@@ -154,21 +154,21 @@ class UserController extends Controller
 	}
 	public function postHuykhoataikhoan(Request $request){
 		//kiểm tra có tồn tại email đó trong bảng users
-		if(!User::where('email', $request->email)->get()->toArray())
+		if(!User::where('sdt', $request->txtsdt)->get()->toArray())
 		{
-			return redirect()->route('huykhoataikhoan')->with('thongbao', 'Email không tồn tại.');
+			return redirect()->route('huykhoataikhoan')->with('thongbao', 'Số điện thoại không tồn tại.');
 		}
 		else
 		{
-			$solanhuy = count(LichDat::where('email',$request->email)->where('khhuydon', 1)->get());
+			$solanhuy = count(LichDat::where('sdt',$request->txtsdt)->where('khhuydon', 1)->get());
 			if($solanhuy < 2)
 			{
 				return redirect()->route('huykhoataikhoan')->with('thongbao','Tài khoản đã hủy ' . $solanhuy .' lần.');
 			}
 			else
 			{
-				LichDat::where('email', $request->email)->delete();
-				return redirect()->route('huykhoataikhoan')->with('thongbao', 'Đã mở khóa tài khoản ' .$request->email);
+				LichDat::where('sdt', $request->txtsdt)->delete();
+				return redirect()->route('huykhoataikhoan')->with('thongbao', 'Đã mở khóa tài khoản ' .$request->txtsdt);
 			}
 		}
 	}

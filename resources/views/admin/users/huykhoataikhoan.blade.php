@@ -29,8 +29,8 @@
                             {{csrf_field()}}
                             
                             <div class="form-group">
-                                <label>Nhập Email</label>
-                                <input class="form-control" name="txtEmail" placeholder="Nhập email..." />
+                                <label>Nhập Số điện thoại</label>
+                                <input class="form-control" name="txtsdt" placeholder="Nhập số điện thoại..." />
                             </div>
 
                             {{-- <div class="form-group">
