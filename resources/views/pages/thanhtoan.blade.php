@@ -34,7 +34,7 @@
 		
 		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$lichdat->id])}}" id="checkout-form">
 			{{csrf_field()}}
-				<input type="hidden" name="gia" value="{{$lichdat->dichvu->gia}}">
+				<input type="hidden" name="gia" value="{{$lichdat->dichvu()->gia}}">
 				<div class="col-xs-12">
 					<div class="form-group">
 						<label for="name">Name</label>
