@@ -282,7 +282,7 @@ Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
 		$sdt = $ld->sdt;
 	}
 	$code = SendCode::sendcode($sdt);
-    User::where('sdt',$sdt)->update(['code'=>$code]);
+    LichDat::where('malichdat',$malichdat)->update(['code'=>$code]);
 	return redirect('xacthucOTPlichdat/'.$malichdat);
 });
 
