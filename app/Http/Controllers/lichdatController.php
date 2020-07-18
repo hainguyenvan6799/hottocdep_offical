@@ -90,6 +90,7 @@ class lichdatController extends Controller
         $lichdat->save();
         
         if($request->hinhthucxacnhan == 1)
+        {
             $data = array(
                 'name'=>$lichdat->tenkhachhang,
                 'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
@@ -102,6 +103,7 @@ class lichdatController extends Controller
             
             window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);</script>';
+    }
         else
         {
             $code = SendCode::sendcode($sdt);
