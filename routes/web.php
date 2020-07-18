@@ -15,6 +15,7 @@ use App\LichDat;
 use App\Dichvu;
 use App\Loaidichvu;
 use App\SendCode;
+use App\User;
 Route::get('/', function () {
 	$loaidichvu = Loaidichvu::all();
 	$dichvu = Dichvu::all();
