@@ -177,7 +177,7 @@ body {font-family: Arial;}
                         </div>
 
                         <div class="form-group">
-                          <label for="dichvu">Chọn hình thức xác nhận lịch đặt</label>
+                          <label>Chọn hình thức xác nhận lịch đặt</label>
                           <select name="hinhthucxacnhan">
                             <option value="1">Email</option>
                             <option value="2">SDT</option>
