@@ -282,7 +282,7 @@ Route::get('xacnhanlichdat/{malichdat}', function($malichdat))
             window.location.href="index";
         },3000);
 	</script>';
-}
+});
 
 //newtest
 Route::get('newtest', 'UserController@newtest');
