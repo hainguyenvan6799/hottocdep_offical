@@ -183,32 +183,39 @@ class UserController extends Controller
 
 	//xác thực tài khoản
 	public function resendVerify(Request $request){
-		if(!empty(User::where('email', $request->txtEmailresend)->where('active', 0)->get()->toArray()))
+		if($request->xacthuc == "sdt")
 		{
-			$user = User::where('email', $request->txtEmailresend)->get()->first();
-				$data = array(
-                'name'=>$user['name'],
-                'message'=>'Vui lòng nhấn vào đường link để xác thực Email.',
-                'email'=>$user['email']
-            );
-            Mail::to($user['email'])->send(new SendMail($data));
-                return redirect('register')->with('thongbao', 'Vui lòng kiểm tra email để hoàn tất đăng ký.');
-		}
-		elseif(!empty(User::where('email', $request->txtEmailresend)->where('active', 1)->get()->toArray()))
-		{
-			echo '<script>alert("Email đã được kích hoạt. vui lòng đăng nhập.");
-				window.setTimeout(function(){
-					window.location.href = "index";
-					}, 3000);
-			</script>';
+			return redirect('resendcodeotp/'.$request->txtresend);
 		}
 		else
 		{
-			echo '<script>alert("Không có email.");
-				window.setTimeout(function(){
-					window.location.href = "index";
-					}, 3000);
-			</script>';
+			if(!empty(User::where('email', $request->txtresend)->where('active', 0)->get()->toArray()))
+			{
+				$user = User::where('email', $request->txtresend)->get()->first();
+					$data = array(
+	                'name'=>$user['name'],
+	                'message'=>'Vui lòng nhấn vào đường link để xác thực Email.',
+	                'email'=>$user['email']
+	            );
+	            Mail::to($user['email'])->send(new SendMail($data));
+	                return redirect('register')->with('thongbao', 'Vui lòng kiểm tra email để hoàn tất đăng ký.');
+			}
+			elseif(!empty(User::where('email', $request->txtresend)->where('active', 1)->get()->toArray()))
+			{
+				echo '<script>alert("Email đã được kích hoạt. vui lòng đăng nhập.");
+					window.setTimeout(function(){
+						window.location.href = "index";
+						}, 3000);
+				</script>';
+			}
+			else
+			{
+				echo '<script>alert("Không có email.");
+					window.setTimeout(function(){
+						window.location.href = "index";
+						}, 3000);
+				</script>';
+			}
 		}
 	}
 

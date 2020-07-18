@@ -100,7 +100,7 @@ class RegisterController extends Controller
         {
             $code = SendCode::sendcode($request->sdt);
             User::where('sdt',$request->sdt)->update(['code'=>$code]);
-            return redirect('xacthucOTP', ['sdt', $request->sdt]);
+            return redirect('xacthucOTP/'.$request->sdt);
         }
     }
 }

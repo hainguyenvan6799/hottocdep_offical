@@ -268,7 +268,7 @@ Route::post('/xacthucOTP', 'UserController@postxacthucOTP');
 Route::get('resendcodeotp/{sdt}', function($sdt){
 	$code = SendCode::sendcode($sdt);
     User::where('sdt',$sdt)->update(['code'=>$code]);
-	return redirect('xacthucOTP');
+	return redirect('xacthucOTP/'.$sdt);
 });
 
 //newtest

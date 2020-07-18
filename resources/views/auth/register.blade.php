@@ -128,7 +128,7 @@
                             {{csrf_field()}}
                             <div class="form-group">
                                 <label for="dangnhap" class="text-danger">Nhập SĐT/Email</label>
-                                <input type="text" name="txtEmailresend" id="dangnhap" class="form-control"><br>
+                                <input type="text" name="txtresend" id="dangnhap" class="form-control"><br>
                             </div>
 
                             <div class="form-group">
