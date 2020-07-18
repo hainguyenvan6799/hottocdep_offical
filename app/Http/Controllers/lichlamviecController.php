@@ -43,8 +43,9 @@ class lichlamviecController extends Controller
         {
             return redirect('index');
         }
+        $cuahang = CuaHang::all();
     	$lichlamviec = lichlamviec_nhanvien::find($id);
-    	return view('admin.lichlamviec_nhanvien.sua', ['lichlamviec'=>$lichlamviec]);
+    	return view('admin.lichlamviec_nhanvien.sua', ['lichlamviec'=>$lichlamviec, 'cuahang'=>$cuahang]);
     }
 
     //post
