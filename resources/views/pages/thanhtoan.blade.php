@@ -32,7 +32,7 @@
 			{{ Session::get('error') }}
 		</div> --}}
 		
-		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$lichdat->id])}}" id="checkout-form">
+		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$lichdat->malichdat])}}" id="checkout-form">
 			{{csrf_field()}}
 				<input type="hidden" name="gia" value="{{$lichdat->dichvu->gia}}">
 				<div class="col-xs-12">
