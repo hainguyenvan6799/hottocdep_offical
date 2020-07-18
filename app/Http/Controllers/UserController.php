@@ -213,7 +213,7 @@ class UserController extends Controller
 			{
 				echo '<script>alert("Không có email.");
 					window.setTimeout(function(){
-						window.location.href = "index";
+						window.location.href = "https://hottocdep.herokuapp.com/";
 						}, 3000);
 				</script>';
 			}
@@ -231,7 +231,7 @@ class UserController extends Controller
 			echo '<script>alert("Xác thực Email thành công.");
 			window.setTimeout(function(){
             
-	            window.location.href="../index";
+	            window.location.href="https://hottocdep.herokuapp.com/";
 	        }, 3000);
 			</script>';
 		}
@@ -243,7 +243,7 @@ class UserController extends Controller
 			echo '<script>alert("Thông tin tài khoản chưa được lưu.");
 			window.setTimeout(function(){
             
-	            window.location.href="../index";
+	            window.location.href="https://hottocdep.herokuapp.com/";
 	        }, 3000);
 			</script>';
 		}
@@ -265,7 +265,7 @@ class UserController extends Controller
 		echo '<script>alert("Bạn đã đăng ký tài khoản thành công.");
 		window.setTimeout(function(){
             
-            window.location.href="index";
+            window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);
 		</script>';
 

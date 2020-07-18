@@ -98,7 +98,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		echo '<script>alert("Bắt đầu dịch vụ của lịch đặt '.$id_lichdat.'");
 			window.setTimeout(function(){
             
-            window.location.href="index";
+            window.location.href="https://hottocdep.herokuapp.com/";
         	}, 3000);
 		</script>';
 
@@ -279,7 +279,7 @@ Route::get('xacnhanlichdat/{malichdat}', function($malichdat)
 		alert("Bạn đã xác nhận lịch đặt thành công.");
 		window.setTimeout(function(){
             
-            window.location.href="index";
+            window.location.href="https://hottocdep.herokuapp.com/";
         },3000);
 	</script>';
 });

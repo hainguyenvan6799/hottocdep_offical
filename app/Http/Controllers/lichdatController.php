@@ -97,7 +97,7 @@ class lichdatController extends Controller
         alert("Vui lòng kiểm tra email để hoàn tất đặt lịch");
         window.setTimeout(function(){
             
-            window.location.href="index";
+            window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);</script>';
     }
 
@@ -155,7 +155,7 @@ class lichdatController extends Controller
         alert("Bạn đã thay đổi lịch. Vui lòng thanh toán tại cửa hàng sau khi hoàn tất dịch vụ.");
         window.setTimeout(function(){
             
-            window.location.href="index";
+            window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);</script>';
         }
         elseif($lichdat->thanhtoan == 2){ // thanh toán bằng hình thức online
@@ -169,7 +169,7 @@ class lichdatController extends Controller
         else{
             window.setTimeout(function(){
             
-            window.location.href="index";
+            window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);
         }
         </script>';
@@ -380,7 +380,7 @@ class lichdatController extends Controller
             echo '<script>
                 alert("Bạn đã thanh toán thành công.");
                 window.setTimeout(function(){
-                    window.location.href="../index";
+                    window.location.href="https://hottocdep.herokuapp.com/";
                 }, 3000);
             </script>';
             // dd($a);
