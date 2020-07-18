@@ -31,10 +31,10 @@
 		{{-- <div class="alert alert-danger" id="charge-error {{ !Session::has('error') ? 'hidden' : ''  }}">
 			{{ Session::get('error') }}
 		</div> --}}
-		@foreach($lichdat as $ld)
-		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$ld->malichdat])}}" id="checkout-form">
+		
+		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$lichdat->id])}}" id="checkout-form">
 			{{csrf_field()}}
-				<input type="hidden" name="gia" value="{{$ld->dichvu->gia}}">
+				<input type="hidden" name="gia" value="{{$lichdat->dichvu->gia}}">
 				<div class="col-xs-12">
 					<div class="form-group">
 						<label for="name">Name</label>
@@ -106,7 +106,6 @@
 				</div> --}}
 				<button type="submit" class="btn btn-success">Buy Now</button>
 		</form>
-		@endforeach
 	</div>
 </div>
 	</div>

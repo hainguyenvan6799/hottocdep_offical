@@ -15,7 +15,7 @@
              <p>Mã lịch: {{$ld->malichdat}}- Giá: {{$ld->dichvu->gia}}Đ</p>
 
              @if($ld->dathanhtoan == 0)
-             <p>Bạn chưa thanh toán ?<a href="{{route('getThanhtoan', ['lichdat_id'=>$ld->malichdat])}}" class="text-danger">Nhấn vào đây để thanh toán online</a></p>
+             <p>Bạn chưa thanh toán ?<a href="{{route('getThanhtoan', ['lichdat_id'=>$ld->id])}}" class="text-danger">Nhấn vào đây để thanh toán online</a></p>
              @else
              <p class="text-success">Bạn đã thanh toán. Nếu bạn hủy lịch, chúng tôi chỉ hoàn lại 80% số tiền ban đầu.(Đối với thanh toán trước khi sử dụng dịch vụ.)</p>
              @endif
