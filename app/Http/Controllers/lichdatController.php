@@ -348,7 +348,7 @@ class lichdatController extends Controller
     public function thanhtoan($lichdat_id){
         if(Auth::check()){
 
-            $lichdat = LichDat::where('malichdat',$lichdat_id)->get()->toArray();
+            $lichdat = LichDat::find($lichdat_id);
             // dd($lichdat);
             return view('pages.thanhtoan', ['lichdat'=>$lichdat]);
             
@@ -380,7 +380,7 @@ class lichdatController extends Controller
             echo '<script>
                 alert("Bạn đã thanh toán thành công.");
                 window.setTimeout(function(){
-                    window.location.href="https://hottocdep.herokuapp.com/";
+                    window.location.href="https://hottocdep.herokuapp.com";
                 }, 3000);
             </script>';
             // dd($a);
