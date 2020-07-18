@@ -8,7 +8,7 @@ use App\LichDat;
 use App\Dichvu;
 use App\Loaidichvu;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMail;
+use App\Mail\verifybooking;
 use App\lichlamviec_nhanvien;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CalendarController;
