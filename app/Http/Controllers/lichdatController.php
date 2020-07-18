@@ -73,7 +73,7 @@ class lichdatController extends Controller
         $lichdat->dichvu_id = $id_dichvu;
         $lichdat->thoigian = $timeslot;
         $lichdat->id_cuahang = $id_cuahang;
-        $lichdat->hienthi = 1;
+        $lichdat->hienthi = 0;
         $lichdat->sdt = $sdt;
         $lichdat->thanhtoan = $request->hinhthucthanhtoan;
         $lichdat->save();
@@ -84,32 +84,19 @@ class lichdatController extends Controller
         }
         
         $lichdat->save();
-
-        if($lichdat->thanhtoan == 1) // thanh toán tại cửa hàng.
-        {
+        $data = array(
+                'name'=>$lichdat->tenkhachhang,
+                'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
+                'malichdat'=>$lichdat->malichdat;
+            );
+            Mail::to($request->email)->send(new SendMail($data));
+        
             echo '<script>
-        alert("Đặt lịch thành công. Vui lòng thanh toán tại cửa hàng sau khi hoàn tất dịch vụ.");
+        alert("Vui lòng kiểm tra email để hoàn tất đặt lịch");
         window.setTimeout(function(){
             
             window.location.href="index";
         }, 3000);</script>';
-        }
-        elseif($lichdat->thanhtoan == 2){ // thanh toán bằng hình thức online
-            echo '<script>
-        if(confirm("Đặt lịch thành công. Bấm OK để chuyển đến trang thanh toán?")){
-            window.setTimeout(function(){
-            
-            window.location.href="thanhtoan/'.$lichdat->id.'";
-        }, 3000);
-        }
-        else{
-            window.setTimeout(function(){
-            
-            window.location.href="index";
-        }, 3000);
-        }
-        </script>';
-        }
     }
 
     // khách hàng

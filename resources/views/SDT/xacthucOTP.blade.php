@@ -19,11 +19,11 @@
                             {{session('loi')}}
                         </div>
                     @endif
-                    @if(session('thongbao'))
+                    
                         <div class="alert alert-danger">
-                            {{session('thongbao')}}
+                            <h2>Vui lòng nhập OTP trên điện thoại</h2>
                         </div>
-                    @endif
+                    
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/xacthucOTP') }}">
                         {{ csrf_field() }}
 

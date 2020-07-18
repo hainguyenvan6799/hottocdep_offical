@@ -256,7 +256,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 
 Route::get('test', 'UserController@test');
 
-//Xác thực email và OTP
+//Xác thực email và OTP và lịch đặt
 //resend verify
 Route::post('resendVerify', 'UserController@resendVerify')->name('resendVerify');
 
@@ -271,6 +271,18 @@ Route::get('resendcodeotp/{sdt}', function($sdt){
     User::where('sdt',$sdt)->update(['code'=>$code]);
 	return redirect('xacthucOTP/'.$sdt);
 });
+
+Route::get('xacnhanlichdat/{malichdat}', function($malichdat))
+{
+	LichDat::where('malichdat', $malichdat)->update(['hienthi'=>1]);
+	echo '<script>
+		alert("Bạn đã xác nhận lịch đặt thành công.");
+		window.setTimeout(function(){
+            
+            window.location.href="index";
+        },3000);
+	</script>';
+}
 
 //newtest
 Route::get('newtest', 'UserController@newtest');
