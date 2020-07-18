@@ -33,7 +33,7 @@
 			{{ Session::get('error') }}
 		</div> --}}
 		
-		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$lichdat->id])}}" id="checkout-form">
+		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$ld->malichdat])}}" id="checkout-form">
 			{{csrf_field()}}
 			
 
