@@ -16,7 +16,7 @@
 	<div class="col-md-6 col-sm-4 col-md-offset-4 col-sm-offset-3">
 		<h1>CheckOut</h1>
 		@foreach($lichdat as $ld)
-		<h4>Your Total: {{$lichdat->dichvu->gia}}đ</h4>
+		<h4>Your Total: {{$ld->dichvu->gia}}đ</h4>
 
 		@if(Session::has('error'))
 			<div id="charge-error" class="alert alert-danger">
