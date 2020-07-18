@@ -91,7 +91,7 @@ class lichdatController extends Controller
                 'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
                 'malichdat'=>$lichdat->malichdat
             );
-            Mail::to($request->email)->send(new SendMail($data));
+            Mail::to($request->email)->send(new verifybooking($data));
         
             echo '<script>
         alert("Vui lòng kiểm tra email để hoàn tất đặt lịch");
