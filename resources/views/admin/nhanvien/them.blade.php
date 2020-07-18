@@ -37,7 +37,9 @@
                                 <label>Tên nhân viên</label>
                                 <select name="user_id" class="form-control">
                                     @foreach($users as $u)
-                                    <option value="{{$u->id}}">{{$u->name}} - {{$u->email}}</option>
+                                        @if($u->loainguoidung == 1)
+                                            <option value="{{$u->id}}">{{$u->name}} - {{$u->email}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

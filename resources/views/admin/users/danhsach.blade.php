@@ -22,6 +22,7 @@
                                 <th>Tên người dùng</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
+                                <th>Loại người dùng</th>
                                 <th>Quyền</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
@@ -34,6 +35,11 @@
                                 <td>T{{$u->name}}</td>
                                 <td>{{$u->email}}</td>
                                 <td>{{$u->sdt}}</td>
+                                @if($u->loainguoidung == 1)
+                                <td>Nhân viên</td>
+                                @elseif($u->loainguoidung == 2)
+                                <td>Khách hàng</td>
+                                @endif
                                 <td>{{$u->quyen}}</td>
 
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" class="xoa" href="admin/user/xoa/{{$u->id}}"> Delete</a></td>

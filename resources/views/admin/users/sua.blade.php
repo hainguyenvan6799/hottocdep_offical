@@ -49,6 +49,13 @@
                                 <input type="password" class="form-control txtPass" name="txtPassagain" placeholder="Nhập lại mật khẩu tại đây..." disabled="" />
                             </div>
                             <div class="form-group">
+                                <label>Loại người dùng </label>
+                                <select class="form-control" name="txtloainguoidung">
+                                    <option value="1">1-Nhân viên</option>
+                                    <option value="2">2-Khách hàng</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Quyền</label>
                                 <label class="radio-inline">
                                     <input name="txtQuyen" value="0" checked="" type="radio">Thường

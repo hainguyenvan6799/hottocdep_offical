@@ -137,6 +137,7 @@ class UserController extends Controller
 		$user->sdt = $request->txtSdt;
 		$request->changePassword == "on" ? $user->password = bcrypt($request->txtPass) : $user->password;
 		$user->quyen = $request->txtQuyen;
+		$user->loainguoidung = $request->txtloainguoidung;
 		$user->save();
 		return redirect('admin/user/danhsach')->with('thongbao','Sửa thông tin người dùng thành công.');
 	}
