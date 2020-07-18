@@ -87,7 +87,7 @@ class lichdatController extends Controller
         $data = array(
                 'name'=>$lichdat->tenkhachhang,
                 'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
-                'malichdat'=>$lichdat->malichdat;
+                'malichdat'=>$lichdat->malichdat
             );
             Mail::to($request->email)->send(new SendMail($data));
         
