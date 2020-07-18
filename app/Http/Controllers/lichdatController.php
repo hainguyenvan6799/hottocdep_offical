@@ -348,7 +348,7 @@ class lichdatController extends Controller
     public function thanhtoan($lichdat_id){
         if(Auth::check()){
 
-            $lichdat = LichDat::where('malichdat',$lichdat_id)->get();
+            $lichdat = LichDat::where('malichdat',$lichdat_id)->get()->toArray();
             // dd($lichdat);
             return view('pages.thanhtoan', ['lichdat'=>$lichdat]);
             
