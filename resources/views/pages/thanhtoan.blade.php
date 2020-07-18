@@ -15,6 +15,7 @@
 		<div class="container">
 	<div class="col-md-6 col-sm-4 col-md-offset-4 col-sm-offset-3">
 		<h1>CheckOut</h1>
+		@foreach($lichdat as $ld)
 		<h4>Your Total: {{$lichdat->dichvu->gia}}đ</h4>
 
 		@if(Session::has('error'))
@@ -34,7 +35,7 @@
 		
 		<form method="post" action="{{route('postThanhtoan', ['lichdat_id'=>$lichdat->id])}}" id="checkout-form">
 			{{csrf_field()}}
-			@foreach($lichdat as $ld)
+			
 
 				<input type="hidden" name="gia" value="{{$ld->dichvu->gia}}">
 				<div class="col-xs-12">
