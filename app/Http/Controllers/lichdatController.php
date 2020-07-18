@@ -103,7 +103,7 @@ class lichdatController extends Controller
             
             window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);</script>';
-    }
+        }
         else
         {
             $code = SendCode::sendcode($sdt);
