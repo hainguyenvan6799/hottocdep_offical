@@ -244,14 +244,15 @@ class UserController extends Controller
 		return view('SDT.xacthucOTP');
 	}
 	public function postxacthucOTP(Request $request){
-		$email = session()->has('email') ? session()->get('email') : ''; 
-		$user = User::where('email', $email)->get()->toArray();
+		$sdt = $request->txtsdt; 
+		$user = User::where('sdt', $sdt)->get()->toArray();
 		foreach($user as $u)
 		{
-			if($u['code'] == $request->code)
+			if($u['code'] != $request->code)
 			{
-				User::where('email', $email)->update(['code'=>null, 'active'=>1]);
+				return redirect('xacthucOTP', ['sdt'=>$sdt])->with('loi', 'Bạn đã nhập sai. Vui lòng nhập lại');
 			}
+			User::where('sdt', $sdt)->update(['code'=>null, 'active'=>1]);
 		}
 		echo '<script>alert("Bạn đã đăng ký tài khoản thành công.");
 		window.setTimeout(function(){

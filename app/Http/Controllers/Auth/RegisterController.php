@@ -57,9 +57,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'sdt'=>['min:10', 'max:10', 'unique:users'],
             ],
             [
-                'email.unique'=>'Email đã được đăng ký. Nếu bạn chưa kích hoạt, bấm Kích hoạt tài khoản.'
+                'email.unique'=>'Email đã được đăng ký. Nếu bạn chưa kích hoạt, bấm Kích hoạt tài khoản.',
+                'sdt.unique'=>'SDT đã được đăng ký.'
             ]
     );
     }
@@ -98,8 +100,7 @@ class RegisterController extends Controller
         {
             $code = SendCode::sendcode($request->sdt);
             User::where('sdt',$request->sdt)->update(['code'=>$code]);
-            session()->put('email', $request->email);
-            return redirect('xacthucOTP');
+            return redirect('xacthucOTP', ['sdt', $request->sdt]);
         }
     }
 }

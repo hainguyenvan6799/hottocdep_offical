@@ -12,6 +12,13 @@
                             {{Session::get('message')}}
                         </div>
                     @endif
+
+
+                    @if(session('loi'))
+                        <div class="alert alert-danger">
+                            {{session('loi')}}
+                        </div>
+                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/xacthucOTP') }}">
                         {{ csrf_field() }}
 
@@ -28,6 +35,8 @@
                                 @endif
                             </div>
                         </div>
+
+                        <input type="hidden" name="txtsdt" value="{{$sdt}}">
 
                         {{-- <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
