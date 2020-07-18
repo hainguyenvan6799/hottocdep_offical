@@ -9,6 +9,8 @@ use App\Dichvu;
 use App\Loaidichvu;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\verifybooking;
+use App\SendCode;
+
 use App\lichlamviec_nhanvien;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CalendarController;
@@ -86,19 +88,26 @@ class lichdatController extends Controller
         }
         
         $lichdat->save();
-        $data = array(
+        
+        if($request->hinhthucxacnhan == 1)
+            $data = array(
                 'name'=>$lichdat->tenkhachhang,
                 'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
                 'malichdat'=>$lichdat->malichdat
             );
             Mail::to($request->email)->send(new verifybooking($data));
-        
             echo '<script>
         alert("Vui lòng kiểm tra email để hoàn tất đặt lịch");
         window.setTimeout(function(){
             
             window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);</script>';
+        else
+        {
+            $code = SendCode::sendcode($sdt);
+            LichDat::where('malichdat', $lichdat->malichdat)->update(['code'=>$code]);
+            return redirect('xacthucOTPlichdat/'.$lichdat->malichdat);
+        }
     }
 
     // khách hàng
@@ -385,6 +394,29 @@ class lichdatController extends Controller
                 }, 3000);
             </script>';
             // dd($a);
+    }
+
+    public function getxacthucOTPlichdat($malichdat){
+        return view('datlich.xacthucOTPlichdat', ['malichdat'=>$malichdat]);
+    }
+    public function postxacthucOTPlichdat(Request $request)
+    {
+        $malichdat = $request->txtmalichdat; 
+        $lichdat = User::where('malichdat', $malichdat)->get()->toArray();
+        foreach($lichdat as $ld)
+        {
+            if($ld['code'] != $request->code)
+            {
+                return redirect('xacthucOTPlichdat/'.$malichdat)->with('loi', 'Bạn đã nhập sai. Vui lòng nhập lại');
+            }
+            LichDat::where('malichdat', $malichdat)->update(['code'=>null, 'hienthi'=>1]);
+        }
+        echo '<script>alert("Bạn đã đặt lịch thành công.");
+        window.setTimeout(function(){
+            
+            window.location.href="https://hottocdep.herokuapp.com/";
+        }, 3000);
+        </script>';
     }
 }
 

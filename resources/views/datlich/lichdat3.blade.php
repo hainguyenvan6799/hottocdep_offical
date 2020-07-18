@@ -177,6 +177,14 @@ body {font-family: Arial;}
                         </div>
 
                         <div class="form-group">
+                          <label for="dichvu">Chọn hình thức xác nhận lịch đặt</label>
+                          <select name="hinhthucxacnhan">
+                            <option value="1">Email</option>
+                            <option value="2">SDT</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
                           @if(session()->get('sualich'))
                           <input class="btn btn-primary" type="submit" name="submit" value="Sửa Lịch">
                           @else

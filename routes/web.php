@@ -264,7 +264,9 @@ Route::get('/xacthucEmail/{email}', 'UserController@getxacthucEmail');
 Route::post('/xacthucEmail/{email}', 'UserController@postxacthucEmail');
 
 Route::get('/xacthucOTP/{sdt}', 'UserController@getxacthucOTP');
+Route::get('/xacthucOTPlichdat/{malichdat}', 'lichdatController@getxacthucOTPlichdat');
 Route::post('/xacthucOTP', 'UserController@postxacthucOTP');
+Route::post('/xacthucOTPlichdat', 'lichdatController@postxacthucOTPlichdat');
 
 Route::get('resendcodeotp/{sdt}', function($sdt){
 	$code = SendCode::sendcode($sdt);
