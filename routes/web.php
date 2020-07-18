@@ -274,6 +274,18 @@ Route::get('resendcodeotp/{sdt}', function($sdt){
 	return redirect('xacthucOTP/'.$sdt);
 });
 
+Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
+	$sdt = '';
+	$lichdat = LichDat::where('malichdat', $lichdat)->get();
+	foreach($lichdat as $ld)
+	{
+		$sdt = $ld->sdt;
+	}
+	$code = SendCode::sendcode($sdt);
+    User::where('sdt',$sdt)->update(['code'=>$code]);
+	return redirect('xacthucOTPlichdat/'.$malichdat);
+});
+
 Route::get('xacnhanlichdat/{malichdat}', function($malichdat)
 {
 	LichDat::where('malichdat', $malichdat)->update(['hienthi'=>1]);

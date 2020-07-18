@@ -61,9 +61,9 @@
                                     Forgot Your Password?
                                 </a> --}}
 
-                                {{-- <a class="btn btn-link" href="resendcodeotp/{{$sdt}}">
+                                <a class="btn btn-link" href="resendcodeotplichdat/{{$malichdat}}">
                                     Resend code
-                                </a> --}}
+                                </a>
                             </div>
                         </div>
                     </form>
