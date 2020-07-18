@@ -240,8 +240,8 @@ class UserController extends Controller
 			</script>';
 		}
 	}
-	public function getxacthucOTP(){
-		return view('SDT.xacthucOTP');
+	public function getxacthucOTP($sdt){
+		return view('SDT.xacthucOTP', ['sdt'=>$sdt]);
 	}
 	public function postxacthucOTP(Request $request){
 		$sdt = $request->txtsdt; 
@@ -250,7 +250,7 @@ class UserController extends Controller
 		{
 			if($u['code'] != $request->code)
 			{
-				return redirect('xacthucOTP', ['sdt'=>$sdt])->with('loi', 'Bạn đã nhập sai. Vui lòng nhập lại');
+				return redirect('xacthucOTP/'.$sdt)->with('loi', 'Bạn đã nhập sai. Vui lòng nhập lại');
 			}
 			User::where('sdt', $sdt)->update(['code'=>null, 'active'=>1]);
 		}

@@ -14,6 +14,7 @@ use App\CuaHang;
 use App\LichDat;
 use App\Dichvu;
 use App\Loaidichvu;
+use App\SendCode;
 Route::get('/', function () {
 	$loaidichvu = Loaidichvu::all();
 	$dichvu = Dichvu::all();
@@ -261,8 +262,14 @@ Route::post('resendVerify', 'UserController@resendVerify')->name('resendVerify')
 Route::get('/xacthucEmail/{email}', 'UserController@getxacthucEmail');
 Route::post('/xacthucEmail/{email}', 'UserController@postxacthucEmail');
 
-Route::get('/xacthucOTP', 'UserController@getxacthucOTP');
+Route::get('/xacthucOTP/{sdt}', 'UserController@getxacthucOTP');
 Route::post('/xacthucOTP', 'UserController@postxacthucOTP');
+
+Route::get('resendcodeotp/{sdt}', function($sdt){
+	$code = SendCode::sendcode($sdt);
+    User::where('sdt',$sdt)->update(['code'=>$code]);
+	return redirect('xacthucOTP');
+});
 
 //newtest
 Route::get('newtest', 'UserController@newtest');
