@@ -42,10 +42,12 @@
                         }
                         $totalinminutes = $deltahour * 60 + $deltaminute;
                     ?>
-                    @if($totalinminutes > 180 && $ld->ngay == Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString())
-                    <a class="btn btn-danger khhuylich" href="khachhang/huylich/{{$ld->id}}">Hủy</a>
-                    @elseif($totalinminutes <= 180 && $ld->ngay == Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString())
+                    
+                    
+                    @if($totalinminutes <= 180 && $ld->ngay == Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString())
                     <p>Còn {{$deltahour}} giờ {{$deltaminute}} phút là đến giờ cắt tóc của quý khách.</p>
+                    @else
+                    <a class="btn btn-danger khhuylich" href="khachhang/huylich/{{$ld->id}}">Hủy</a>
                     @endif
 
                 @endif
