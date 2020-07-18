@@ -349,7 +349,7 @@ class lichdatController extends Controller
         if(Auth::check()){
 
             // $lichdat = LichDat::find($lichdat_id);
-            $lichdat = LichDat::where('malichdat',$lichdat_id)->get()->toArray();
+            $lichdat = LichDat::where('malichdat',$lichdat_id)->get();
             // dd($lichdat);
             return view('pages.thanhtoan', ['lichdat'=>$lichdat]);
             
