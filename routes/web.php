@@ -272,7 +272,7 @@ Route::get('resendcodeotp/{sdt}', function($sdt){
 	return redirect('xacthucOTP/'.$sdt);
 });
 
-Route::get('xacnhanlichdat/{malichdat}', function($malichdat))
+Route::get('xacnhanlichdat/{malichdat}', function($malichdat)
 {
 	LichDat::where('malichdat', $malichdat)->update(['hienthi'=>1]);
 	echo '<script>
