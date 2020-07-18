@@ -248,7 +248,7 @@ class UserController extends Controller
 		}
 	}
 	public function getxacthucOTP($sdt){
-		return view('SDT.xacthucOTP', ['sdt'=>$sdt]);
+		return view('SDT.xacthucOTP', ['sdt'=>$sdt])->with('thongbao', 'Vui lòng kiểm tra điện thoại.');
 	}
 	public function postxacthucOTP(Request $request){
 		$sdt = $request->txtsdt; 

@@ -19,6 +19,11 @@
                             {{session('loi')}}
                         </div>
                     @endif
+                    @if(session('thongbao'))
+                        <div class="alert alert-danger">
+                            {{session('thongbao')}}
+                        </div>
+                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/xacthucOTP') }}">
                         {{ csrf_field() }}
 
