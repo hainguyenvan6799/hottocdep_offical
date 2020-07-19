@@ -140,55 +140,55 @@ class lichdatController extends Controller
     {
         $stripe = Stripe::setApiKey('sk_test_KEGrVZIG4Ea4SJ9O6N1jzIhd00keMDnAz1');
         //sk_test_KEGrVZIG4Ea4SJ9O6N1jzIhd00keMDnAz1
-        $id_lichdat = session()->get('id_lichsua');
-        $lichdat = LichDat::find($id_lichdat);
-        $lichdat->ngay = $request->datebook;
-        $lichdat->nhanvien_id = $request->id_nhanvien;
-        $lichdat->thoigian = $request->timeslot;
-        $lichdat->id_cuahang = session()->get('id_cuahang');
-        $lichdat->dichvu_id = $request->dichvu;
-        if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
+        $malichdat = session()->get('id_lichsua');
+        $lichdats = LichDat::where('malichdat',$malichdat)->get();
+        foreach($lichdats as $lichdat)
         {
-             $refund = \Stripe\Refund::create([
-                'charge' => $lichdat->charge_id,
-                'amount' => $lichdat->dichvu->gia,  // For 10 $
-                'reason' => 'requested_by_customer'
-            ]);
-            $lichdat->dathanhtoan = 0;
-            $lichdat->charge_id = null;
-        }
-        $lichdat->save();
-        session()->forget('sualich');
-        session()->forget('id_lichsua');
-        if($lichdat->thanhtoan == 1) // thanh toán tại cửa hàng.
+            $lichdat->ngay = $request->datebook;
+            $lichdat->nhanvien_id = $request->id_nhanvien;
+            $lichdat->thoigian = $request->timeslot;
+            $lichdat->id_cuahang = session()->get('id_cuahang');
+            $lichdat->dichvu_id = $request->dichvu;
+            if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
+            {
+                 $refund = \Stripe\Refund::create([
+                    'charge' => $lichdat->charge_id,
+                    'amount' => $lichdat->dichvu->gia,  // For 10 $
+                    'reason' => 'requested_by_customer'
+                ]);
+                $lichdat->dathanhtoan = 0;
+                $lichdat->charge_id = null;
+            }
+            $lichdat->save();
+            session()->forget('sualich');
+            session()->forget('id_lichsua');
+
+            if($request->hinhthucxacnhan == 1)
         {
+            $data = array(
+                'name'=>$lichdat->tenkhachhang,
+                'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
+                'malichdat'=>$lichdat->malichdat
+            );
+            Mail::to($request->email)->send(new verifybooking($data));
             echo '<script>
-        alert("Bạn đã thay đổi lịch. Vui lòng thanh toán tại cửa hàng sau khi hoàn tất dịch vụ.");
+        alert("Vui lòng kiểm tra email để hoàn tất đặt lịch");
         window.setTimeout(function(){
             
             window.location.href="https://hottocdep.herokuapp.com/";
         }, 3000);</script>';
         }
-        elseif($lichdat->thanhtoan == 2){ // thanh toán bằng hình thức online
-            echo '<script>
-        if(confirm("Thay đổi lịch thành công. Bấm OK để chuyển đến trang thanh toán?")){
-            window.setTimeout(function(){
-            
-            window.location.href="thanhtoan/'.$lichdat->id.'";
-        }, 3000);
+        else
+        {
+            $code = SendCode::sendcode(Auth::user()->sdt);
+            LichDat::where('malichdat', $lichdat->malichdat)->update(['code'=>$code]);
+            return redirect('xacthucOTPlichdat/'.$lichdat->malichdat);
         }
-        else{
-            window.setTimeout(function(){
-            
-            window.location.href="https://hottocdep.herokuapp.com/";
-        }, 3000);
-        }
-        </script>';
         }
     }
 
     public function khachhuylichdat($malichdat){
-        $lichdat = LichDat::where('malichdat',$malichdat);
+        $lichdats = LichDat::where('malichdat',$malichdat);
         foreach($lichdats as $lichdat)
         {
             $lichdat->hienthi = 0;
