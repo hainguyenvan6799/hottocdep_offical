@@ -407,7 +407,7 @@ class lichdatController extends Controller
     public function postxacthucOTPlichdat(Request $request)
     {
         $malichdat = $request->txtmalichdat; 
-        $lichdat = User::where('malichdat', $malichdat)->get()->toArray();
+        $lichdat = LichDat::where('malichdat', $malichdat)->get()->toArray();
         foreach($lichdat as $ld)
         {
             if($ld['code'] != $request->code)
