@@ -187,24 +187,27 @@ class lichdatController extends Controller
         }
     }
 
-    public function khachhuylichdat($id_lichdat){
-        $lichdat = LichDat::find($id_lichdat);
-        $lichdat->hienthi = 0;
-        $lichdat->khhuydon = 1;
-        if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
+    public function khachhuylichdat($malichdat){
+        $lichdat = LichDat::where('malichdat',$malichdat);
+        foreach($lichdats as $lichdat)
         {
-            $stripe = Stripe::setApiKey('sk_test_KEGrVZIG4Ea4SJ9O6N1jzIhd00keMDnAz1');
+            $lichdat->hienthi = 0;
+            $lichdat->khhuydon = 1;
+            if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
+            {
+                $stripe = Stripe::setApiKey('sk_test_KEGrVZIG4Ea4SJ9O6N1jzIhd00keMDnAz1');
 
-             $refund = \Stripe\Refund::create([
-                'charge' => $lichdat->charge_id,
-                'amount' => 0.8 * $lichdat->dichvu->gia,  // For 10 $
-                'reason' => 'requested_by_customer'
-            ]);
-            $lichdat->dathanhtoan = 0;
-            // $lichdat->charge_id = null;
+                 $refund = \Stripe\Refund::create([
+                    'charge' => $lichdat->charge_id,
+                    'amount' => 0.8 * $lichdat->dichvu->gia,  // For 10 $
+                    'reason' => 'requested_by_customer'
+                ]);
+                $lichdat->dathanhtoan = 0;
+                // $lichdat->charge_id = null;
+            }
+            
+            $lichdat->save();
         }
-        
-        $lichdat->save();
         echo '<script>
         alert("Bạn đã hủy lịch.");
         window.setTimeout(function(){

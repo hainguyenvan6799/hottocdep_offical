@@ -322,14 +322,14 @@ Route::get('formDatLich', function(){
 
 
 //sửa lịch đặt
-Route::get('formDatLich/{id_lichdat}', function($id_lichdat){
-	if(!LichDat::find($id_lichdat))
+Route::get('formDatLich/{malichdat}', function($malichdat){
+	if(empty(LichDat::where('malichdat',$malichdat)))
 	{
 		return redirect('index');
 	}
-	$lichdat = LichDat::find($id_lichdat);
-	session()->put('sualich', $id_lichdat);
-	session()->put('id_lichsua', $id_lichdat);
+	$lichdat = LichDat::where('malichdat',$malichdat)->get();
+	session()->put('sualich', $malichdat);
+	session()->put('id_lichsua', $malichdat);
 	return view('datlich.datlich', ['lichdat'=>$lichdat]);
 });
 
@@ -349,7 +349,7 @@ Route::get('hienthicacdichvu/{idloaidichvu}', 'lichdatController@hienthicacdichv
 //khách hàng thay đổi, xem lịch đặt, hủy lịch đặt
 
 Route::get('xemlailich/{sdt}', 'lichdatController@xemlailich');
-Route::get('khachhang/huylich/{id_lichdat}', 'lichdatController@khachhuylichdat');
+Route::get('khachhang/huylich/{malichdat}', 'lichdatController@khachhuylichdat');
 
 //ajax nào các bạn
 Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');

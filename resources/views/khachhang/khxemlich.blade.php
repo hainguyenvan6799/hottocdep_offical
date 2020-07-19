@@ -29,7 +29,7 @@
                 @if($ld->dangthuchien == 1)
                     <input type="button" class="btn btn-success" name="" value="Đang thực hiện dịch vụ." readonly="">
                 @else
-                    <a href="formDatLich/{{$ld->id}}" class="btn btn-primary mr-1">Sửa</a>
+                    <a href="formDatLich/{{$ld->malichdat}}" class="btn btn-primary mr-1">Sửa</a>
                     <?php 
                         $hour = (int)$ld->thoigian;
                         $nowhour = Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour;
@@ -47,7 +47,7 @@
                     @if($totalinminutes <= 180 && $ld->ngay == Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString())
                     <p>Còn {{$deltahour}} giờ {{$deltaminute}} phút là đến giờ cắt tóc của quý khách.</p>
                     @else
-                    <a class="btn btn-danger khhuylich" href="khachhang/huylich/{{$ld->id}}">Hủy</a>
+                    <a class="btn btn-danger khhuylich" href="khachhang/huylich/{{$ld->malichdat}}">Hủy</a>
                     @endif
 
                 @endif
