@@ -188,7 +188,7 @@ class lichdatController extends Controller
     }
 
     public function khachhuylichdat($malichdat){
-        $lichdats = LichDat::where('malichdat',$malichdat);
+        $lichdats = LichDat::where('malichdat',$malichdat)->get();
         foreach($lichdats as $lichdat)
         {
             $lichdat->hienthi = 0;
