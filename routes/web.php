@@ -109,7 +109,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	});
 
 	//hoàn thành lịch nào đó
-	Route::post('adminhoantatlichdat/{id_lichdat}', 'dashboardController@adminhoantatlichdat')->name('adminhoantatlichdat');
+	Route::post('adminhoantatlichdat/{malichdat}', 'dashboardController@adminhoantatlichdat')->name('adminhoantatlichdat');
 	
 	Route::group(['prefix'=>'dashboard'], function(){
 		Route::get('index', 'dashboardController@getIndex')->name('indexDashboard');

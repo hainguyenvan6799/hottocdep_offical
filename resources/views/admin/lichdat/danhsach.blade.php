@@ -55,6 +55,8 @@
                                 <td><a href="admin/startService/{{$ld->malichdat}}">Nhấn để bắt đầu</a></td>
                                 @elseif($ld->khhuydon == 1)
                                 <td><input type="" name="" disabled="" class="btn btn-danger" value="Đã hủy lịch."></td>
+                                @elseif($ld->dangthuchien == 1)
+                                <td><input type="" name="" disabled="" class="btn btn-success" value="Đang thực hiện."></td>
                                 @else
                                 <td><input type="" name="" disabled="" class="btn btn-success" value="Đã hoàn thành."></td>
                                 @endif

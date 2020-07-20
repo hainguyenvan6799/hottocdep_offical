@@ -5,7 +5,7 @@
     <base href="{{asset('')}}">
 </head>
 <body>
-    @if(count($lichdat) == 0)
+    @if($count == 0)
     <h2>Không có lịch đặt</h2>
     @endif
 
