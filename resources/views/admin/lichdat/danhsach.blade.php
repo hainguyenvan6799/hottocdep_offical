@@ -52,11 +52,16 @@
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->id])}}">Edit</a></td>
 
                                 @if($ld->hoanthanhlich == 0 && $ld->khhuydon == null)
-                                <td><a href="admin/startService/{{$ld->malichdat}}">Nhấn để bắt đầu</a></td>
+                                <td>
+                                    @if($ld->dangthuchien == 1)
+                                    <input type="" name="" disabled="" class="btn btn-success" value="Đang thực hiện.">
+                                    @else
+                                    <a href="admin/startService/{{$ld->malichdat}}">Nhấn để bắt đầu</a>
+                                    @endif
+                                </td>
                                 @elseif($ld->khhuydon == 1)
                                 <td><input type="" name="" disabled="" class="btn btn-danger" value="Đã hủy lịch."></td>
-                                @elseif($ld->dangthuchien == 1)
-                                <td><input type="" name="" disabled="" class="btn btn-success" value="Đang thực hiện."></td>
+                    
                                 @else
                                 <td><input type="" name="" disabled="" class="btn btn-success" value="Đã hoàn thành."></td>
                                 @endif
