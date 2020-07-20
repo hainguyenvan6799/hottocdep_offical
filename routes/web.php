@@ -87,15 +87,19 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	// });
 
 	//Bắt đầu lịch đặt
-	Route::get('startService/{id_lichdat}', function($id_lichdat){
-		if(!LichDat::find($id_lichdat))
+	Route::get('startService/{malichdat}', function($malichdat){
+		if(empty(LichDat::where('malichdat',$malichdat)->get()->toArray()))
 		{
 			return redirect('index');
 		}
-		$lichdat = LichDat::find($id_lichdat);
-		$lichdat->dangthuchien = 1;
-		$lichdat->save();
-		echo '<script>alert("Bắt đầu dịch vụ của lịch đặt '.$id_lichdat.'");
+		$lichdats = LichDat::where('malichdat',$malichdat);
+		foreach($lichdats as $lichdat)
+		{
+			$lichdat->dangthuchien = 1;
+			$lichdat->save();
+		}
+		
+		echo '<script>alert("Bắt đầu dịch vụ của lịch đặt '.$malichdat.'");
 			window.setTimeout(function(){
             
             window.location.href="https://hottocdep.herokuapp.com/";
@@ -323,7 +327,7 @@ Route::get('formDatLich', function(){
 
 //sửa lịch đặt
 Route::get('formDatLich/{malichdat}', function($malichdat){
-	if(empty(LichDat::where('malichdat',$malichdat)))
+	if(empty(LichDat::where('malichdat',$malichdat)->get()->toArray()))
 	{
 		return redirect('index');
 	}

@@ -52,7 +52,7 @@
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->id])}}">Edit</a></td>
 
                                 @if($ld->hoanthanhlich == 0 && $ld->khhuydon == null)
-                                <td><a href="admin/startService/{{$ld->id}}">Nhấn để bắt đầu</a></td>
+                                <td><a href="admin/startService/{{$ld->malichdat}}">Nhấn để bắt đầu</a></td>
                                 @elseif($ld->khhuydon == 1)
                                 <td><input type="" name="" disabled="" class="btn btn-danger" value="Đã hủy lịch."></td>
                                 @else
