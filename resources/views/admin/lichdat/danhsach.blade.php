@@ -34,6 +34,7 @@
                         </thead>
                         <tbody>
                             @foreach($lichdat as $ld)
+                            @if($ld->hienthi == 1)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$ld->malichdat}}</td>
                                 <td>{{$ld->nhanvien->user->name}}</td>
@@ -83,6 +84,7 @@
                                 @endif
 
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

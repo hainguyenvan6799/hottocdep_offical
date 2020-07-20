@@ -288,6 +288,16 @@ Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
 	$lichdat = LichDat::where('malichdat', $malichdat)->get();
 	foreach($lichdat as $ld)
 	{
+		if(!empty(LichDat::where('nhanvien_id', $ld->nhanvien_id)->where('ngay', $ld->ngay)->where('thoigian', $ld->thoigian)->where('hienthi', 1)->get()->toArray()))
+		{
+			echo '<script>alert("Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.");
+			window.setTimeout(function(){
+            
+            window.location.href="https://hottocdep.herokuapp.com/formDatLich/'.$malichdat.'";
+        	}, 3000);
+			</script>';
+
+		}
 		$sdt = $ld->sdt;
 	}
 	$code = SendCode::sendcode($sdt);
@@ -295,9 +305,20 @@ Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
 	return redirect('xacthucOTPlichdat/'.$malichdat);
 });
 Route::get('resendemaillichdat/{malichdat}', function($malichdat){
+
 	$lichdats = LichDat::where('malichdat', $malichdat)->get();
 	foreach($lichdats as $lichdat)
 	{
+		if(!empty(LichDat::where('nhanvien_id', $lichdat->nhanvien_id)->where('ngay', $lichdat->ngay)->where('thoigian', $lichdat->thoigian)->where('hienthi', 1)->get()->toArray()))
+		{
+			echo '<script>alert("Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.");
+			window.setTimeout(function(){
+            
+            window.location.href="https://hottocdep.herokuapp.com/formDatLich/'.$malichdat.'";
+        	}, 3000);
+			</script>';
+
+		}
 		$data = array(
                 'name'=>$lichdat->tenkhachhang,
                 'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
