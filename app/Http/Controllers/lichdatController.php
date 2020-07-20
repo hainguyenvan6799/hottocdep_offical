@@ -388,7 +388,7 @@ class lichdatController extends Controller
                 "description"=>"Test Charge",
                 "customer"=>$customer->id
             ));
-            $lichdats = LichDat::where('malichdat',$lichdat_id);
+            $lichdats = LichDat::where('malichdat',$lichdat_id)->get();
             foreach($lichdats as $lichdat)
             {
                 $lichdat->dathanhtoan = 1;
