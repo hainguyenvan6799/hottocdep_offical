@@ -96,7 +96,7 @@
     
     <script type="text/javascript">
         var formSua = document.getElementById('formSua');
-        var text = 'Bạn có chắc chắn muốn sửa thông tin loại dịch vụ này?';
+        var text = 'Bạn có chắc chắn muốn sửa thông tin người dùng này?';
         this.alertBox(formSua, text);
     </script>
 @endsection

@@ -56,7 +56,7 @@
 
 @endsection
 
-@section('script')
+{{-- @section('script')
     <script type="text/javascript">
         function xoa(id, event){
             if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
@@ -69,4 +69,4 @@
             }
         }
     </script>
-@endsection
+@endsection --}}

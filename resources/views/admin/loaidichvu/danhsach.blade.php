@@ -29,7 +29,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$ldv->id}}</td>
                                 <td>{{$ldv->tenloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa({{$ldv->id}}, event);"> Delete</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" class="xoa" href="admin/loaidichvu/xoa/{{$ldv->id}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaidichvu/sua/{{$ldv->id}}">Edit</a></td>
                             </tr>
                             @endforeach
@@ -43,7 +43,7 @@
 
 @endsection
 
-@section('script')
+{{-- @section('script')
     <script type="text/javascript">
         function xoa(id, event){
             if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
@@ -56,4 +56,4 @@
             }
         }
     </script>
-@endsection
+@endsection --}}
