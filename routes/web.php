@@ -92,7 +92,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		{
 			return redirect('index');
 		}
-		$lichdats = LichDat::where('malichdat',$malichdat);
+		$lichdats = LichDat::where('malichdat',$malichdat)->get();
 		foreach($lichdats as $lichdat)
 		{
 			$lichdat->dangthuchien = 1;
