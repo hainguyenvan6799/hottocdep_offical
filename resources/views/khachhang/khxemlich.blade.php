@@ -5,9 +5,6 @@
     <base href="{{asset('')}}">
 </head>
 <body>
-    @if($count == 0)
-    <h2>Không có lịch đặt</h2>
-    @endif
 
 	@foreach($lichdat as $ld)
 	@if($ld->hienthi == 1 && $ld->ngay >= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString() && $ld->hoanthanhlich != 1)

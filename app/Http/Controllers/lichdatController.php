@@ -116,7 +116,7 @@ class lichdatController extends Controller
     public function xemlailich($sdt)
     {
         $lichdat = LichDat::where('sdt',$sdt)->get();
-        $count =  count(LichDat::where('sdt', $sdt)->where('hienthi', 1)->where('khhuydon', 'null')->get()->toArray());
+        // $count =  count(LichDat::where('sdt', $sdt)->where('hienthi', 1)->where('khhuydon', 'null')->get()->toArray());
         // foreach($lichdat as $ld)
         // {
         //     echo '<div class="border border-success rounded p-3 my-3">';
@@ -128,7 +128,7 @@ class lichdatController extends Controller
         //     echo '<a class="btn btn-danger khhuylich" href="khachhang/huylich/'.$ld->id.'">Hủy</a>';
         //     echo '</div>';
         // }
-        return view('khachhang.khxemlich', ['lichdat'=>$lichdat, 'count'=>$count]);
+        return view('khachhang.khxemlich', ['lichdat'=>$lichdat]);
     }
 
     public function khachthaydoilichdat($id_lichdat)
