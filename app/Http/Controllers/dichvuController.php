@@ -14,7 +14,7 @@ class dichvuController extends Controller
     	return view('admin.dichvu.danhsach', ['dichvu'=>$dichvu]);
     }
     public function getThem(){
-    	$loaidichvu = Loaidichvu::all();
+    	$loaidichvu = Loaidichvu::all(); 
     	return view('admin.dichvu.them', ['loaidichvu'=>$loaidichvu]); 
     }
     public function getSua($iddv)

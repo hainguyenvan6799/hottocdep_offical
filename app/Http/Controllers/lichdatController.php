@@ -149,6 +149,7 @@ class lichdatController extends Controller
             $lichdat->thoigian = $request->timeslot;
             $lichdat->id_cuahang = session()->get('id_cuahang');
             $lichdat->dichvu_id = $request->dichvu;
+            $lichdat->hienthi = 0;
             if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
             {
                  $refund = \Stripe\Refund::create([
@@ -387,11 +388,14 @@ class lichdatController extends Controller
                 "description"=>"Test Charge",
                 "customer"=>$customer->id
             ));
-            $lichdat = LichDat::find($lichdat_id);
-            $lichdat->dathanhtoan = 1;
-            $lichdat->thanhtoan = 2; // thanh toán online
-            $lichdat->charge_id = $a->id;
-            $lichdat->save();
+            $lichdats = LichDat::where('malichdat',$lichdat_id);
+            foreach($lichdats as $lichdat)
+            {
+                $lichdat->dathanhtoan = 1;
+                $lichdat->thanhtoan = 2; // thanh toán online
+                $lichdat->charge_id = $a->id;
+                $lichdat->save();
+            }
             echo '<script>
                 alert("Bạn đã thanh toán thành công.");
                 window.setTimeout(function(){
