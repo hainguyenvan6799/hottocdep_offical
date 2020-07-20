@@ -276,7 +276,7 @@ Route::get('resendcodeotp/{sdt}', function($sdt){
 
 Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
 	$sdt = '';
-	$lichdat = LichDat::where('malichdat', $lichdat)->get();
+	$lichdat = LichDat::where('malichdat', $malichdat)->get();
 	foreach($lichdat as $ld)
 	{
 		$sdt = $ld->sdt;
