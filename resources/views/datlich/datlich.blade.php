@@ -10,6 +10,11 @@
 {{-- public/css/cssformdatlich.css --}}
 </head>
 <body style="background-image: url('admin_asset/images/bg-1.jpg');">
+    @if(session('thongbaotontai'))
+        <div class="alert alert-danger">
+            <h1>{{session('thongbaotontai')}}</h1>
+        </div>
+    @endif
     <h1><a href="index">Quay về trang chủ</a></h1>
     <h1 class="text-center" style="color: white;">Đặt lịch cắt tóc</h1>
 <!-- MultiStep Form -->

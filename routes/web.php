@@ -290,12 +290,9 @@ Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
 	{
 		if(!empty(LichDat::where('nhanvien_id', $ld->nhanvien_id)->where('ngay', $ld->ngay)->where('thoigian', $ld->thoigian)->where('hienthi', 1)->get()->toArray()))
 		{
-			echo '<script>alert("Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.");
-			window.setTimeout(function(){
-            
-            window.location.href="https://hottocdep.herokuapp.com/formDatLich/'.$malichdat.'";
-        	}, 3000);
-			</script>';
+			// echo '<script>alert("Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.");
+			// </script>';
+			return redirect('formDatLich/'.$malichdat)->with('thongbaotontai', 'Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.');
 
 		}
 		$sdt = $ld->sdt;
@@ -311,12 +308,7 @@ Route::get('resendemaillichdat/{malichdat}', function($malichdat){
 	{
 		if(!empty(LichDat::where('nhanvien_id', $lichdat->nhanvien_id)->where('ngay', $lichdat->ngay)->where('thoigian', $lichdat->thoigian)->where('hienthi', 1)->get()->toArray()))
 		{
-			echo '<script>alert("Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.");
-			window.setTimeout(function(){
-            
-            window.location.href="https://hottocdep.herokuapp.com/formDatLich/'.$malichdat.'";
-        	}, 3000);
-			</script>';
+			return redirect('formDatLich/'.$malichdat)->with('thongbaotontai', 'Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.');
 
 		}
 		$data = array(
