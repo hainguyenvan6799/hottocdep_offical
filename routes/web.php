@@ -16,6 +16,11 @@ use App\Dichvu;
 use App\Loaidichvu;
 use App\SendCode;
 use App\User;
+use App\Mail\verifybooking;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+
 Route::get('/', function () {
 	$loaidichvu = Loaidichvu::all();
 	$dichvu = Dichvu::all();
@@ -288,6 +293,24 @@ Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
 	$code = SendCode::sendcode($sdt);
     LichDat::where('malichdat',$malichdat)->update(['code'=>$code]);
 	return redirect('xacthucOTPlichdat/'.$malichdat);
+});
+Route::get('resendemaillichdat/{malichdat}', function($malichdat){
+	$lichdats = LichDat::where('malichdat', $malichdat)->get();
+	foreach($lichdats as $lichdat)
+	{
+		$data = array(
+                'name'=>$lichdat->tenkhachhang,
+                'message'=>'Vui lòng nhấn vào đường link để xác thực lịch đặt của bạn.',
+                'malichdat'=>$lichdat->malichdat
+            );
+            Mail::to(Auth::user()->email)->send(new verifybooking($data));
+	}
+	echo '<script>
+        alert("Vui lòng kiểm tra email để hoàn tất đặt lịch");
+        window.setTimeout(function(){
+            
+            window.location.href="https://hottocdep.herokuapp.com/";
+        }, 3000);</script>';
 });
 
 Route::get('xacnhanlichdat/{malichdat}', function($malichdat)

@@ -7,6 +7,16 @@
 <body>
 
 	@foreach($lichdat as $ld)
+    @if($ld->hienthi == 0)
+    <h3>{{$ld->tenkhachhang}}</h3>
+
+             <p>Ngày: {{date( 'd-m-y' ,strtotime($ld->ngay))}} Thời gian: {{ $ld->thoigian }}</p>
+             <p>Dịch vụ: {{$ld->dichvu->tendichvu}}</p>
+             <p>Mã lịch: {{$ld->malichdat}}- Giá: {{$ld->dichvu->gia}}Đ</p>
+    <h3>Chọn hình thức xác nhận lịch đặt</h3>
+    <a class="btn btn-success" href="resendemaillichdat/{{$ld->malichdat}}">Nhấn vào để xác thực bằng Email</a>
+    <a class="btn btn-success" href="resendcodeotplichdat/{{$ld->malichdat}}">Nhấn vào để xác thực bằng OTP số điện thoại</a>
+    @endif
 	@if($ld->hienthi == 1 && $ld->ngay >= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString() && $ld->hoanthanhlich != 1)
 		<div class="border border-success rounded p-3 my-3">
              <h3>{{$ld->tenkhachhang}}</h3>
