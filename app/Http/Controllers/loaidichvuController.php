@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\loaidichvu;
+use App\Loaidichvu;
 
 class loaidichvuController extends Controller
 {
