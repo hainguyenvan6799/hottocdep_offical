@@ -7,7 +7,7 @@
 <body>
 
 	@foreach($lichdat as $ld)
-    @if($ld->hienthi == 0)
+    @if($ld->hienthi == 0 && $ld->ngay >= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString() && $ld->thoigian >= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour)
     <h3>{{$ld->tenkhachhang}}</h3>
 
              <p>Ngày: {{date( 'd-m-y' ,strtotime($ld->ngay))}} Thời gian: {{ $ld->thoigian }}</p>
@@ -65,6 +65,15 @@
 
               @endif
         </div>
+  @elseif($ld->hoanthanhlich == 1 && $ld->dathanhtoan == 0)
+  <h3>{{$ld->tenkhachhang}}</h3>
+
+             <p>Ngày: {{date( 'd-m-y' ,strtotime($ld->ngay))}} Thời gian: {{ $ld->thoigian }}</p>
+             <p>Dịch vụ: {{$ld->dichvu->tendichvu}}</p>
+             <p>Mã lịch: {{$ld->malichdat}}- Giá: {{$ld->dichvu->gia}}Đ</p>
+             <input type="" name="" class="btn btn-success" value="Đã hoàn tất lịch đặt.">
+             <p>Bạn chưa thanh toán ?<a href="{{route('getThanhtoan', ['lichdat_id'=>$ld->malichdat])}}" class="text-danger">Nhấn vào đây để thanh toán online</a></p>
+
   @endif
 	@endforeach
 </body>
