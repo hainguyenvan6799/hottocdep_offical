@@ -35,6 +35,14 @@
 					@endif
 
 				@else
+					{{-- Kiểm tra đã thanh toán hay chưa --}}
+					@if($ld->dathanhtoan == 1)
+						<p class="text-success">Bạn đã thanh toán. Nếu bạn hủy lịch, chúng tôi chỉ hoàn lại 80% số tiền ban đầu.(Đối với thanh toán trước khi sử dụng dịch vụ.)</p>
+					@else
+						<p>Bạn chưa thanh toán ?<a href="{{route('getThanhtoan', ['lichdat_id'=>$ld->malichdat])}}" class="text-danger">Nhấn vào đây để thanh toán online</a></p>
+					@endif
+
+					{{-- Kiểm tra có đang trong quá trình thực hiện hay không --}}
 					@if($ld->dangthuchien == 1)
 						{{-- Khi lịch đặt đang được thực hiện thì không được hủy hoặc sửa lịch --}}
 						<input type="button" class="btn btn-success" name="" value="Lịch đặt đang được thực hiện" readonly=""><br>
@@ -58,6 +66,7 @@
 
 						{{--  --}}
 					@endif
+
 				@endif
 
 			@endif
@@ -82,4 +91,6 @@
 </script>
 </html>
 </html>
+
+					
 
