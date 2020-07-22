@@ -40,7 +40,7 @@
 						<p>Bạn chưa thanh toán ?<a href="{{route('getThanhtoan', ['lichdat_id'=>$ld->malichdat])}}" class="text-danger">Nhấn vào đây để thanh toán online</a></p>
 					@else
 					<?php 
-						$delta_hour = int($ld->thoigian) - $now_hour;
+						$delta_hour = (int)$ld->thoigian - $now_hour;
 						$delta_minute = 60 - $now_minute;
 						$total_delta_minute = $delta_hour * 60 + $delta_minute;
 						dd($total_delta_minute);
