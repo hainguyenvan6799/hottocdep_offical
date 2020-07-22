@@ -56,11 +56,9 @@
 						}
 						$total_delta_minute = $delta_hour * 60 + $delta_minute;
 						$arr1 = explode('-', $ld->ngay);
-						dd((int)$ld->thoigian);
 						$tgianlichdat = Carbon\Carbon::parse($arr1[0], $arr1[1], $arr1[2], (int)$ld->thoigian, 0, 0,7);
-						dd($tgianlichdat);
 					?>
-						@if($ld->ngay == $now && $ld->thoigian <= $now_hour)
+						@if($ld->ngay == $now && $tgianlichdat->isPast())
 							<p class="text-danger">Bạn đã bị lỡ lịch. Nếu bạn đã thanh toán, vui lòng liên hệ admin để hủy lịch và hoàn tiền.</p>
 						@elseif($ld->ngay == $now && $total_delta_minute <= 180)
 							<p>Còn {{$delta_hour}} giờ {{$delta_minute}} phút là đến giờ cắt tóc của quý khách.</p>
@@ -100,4 +98,4 @@
 </html>
 
 					
-
+{{-- $ld->thoigian <= $now_hour --}}
