@@ -55,6 +55,9 @@
 							$delta_minute = 60 - $now_minute;
 						}
 						$total_delta_minute = $delta_hour * 60 + $delta_minute;
+						$arr1 = explode('-', $ld->ngay);
+						$tgianlichdat = Carbon\Carbon::create($arr1[2], $arr1[1], $arr[0], (int)$ld->thoigian, 0, 0);
+						dd($tgianlichdat->isPast());
 					?>
 						@if($ld->ngay == $now && $ld->thoigian <= $now_hour)
 							<p class="text-danger">Bạn đã bị lỡ lịch. Nếu bạn đã thanh toán, vui lòng liên hệ admin để hủy lịch và hoàn tiền.</p>
