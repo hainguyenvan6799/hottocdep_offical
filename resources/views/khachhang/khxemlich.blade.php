@@ -46,7 +46,6 @@
 					@if($ld->dangthuchien == 1)
 						{{-- Khi lịch đặt đang được thực hiện thì không được hủy hoặc sửa lịch --}}
 						<input type="button" class="btn btn-success" name="" value="Lịch đặt đang được thực hiện" readonly=""><br>
-						<p>Bạn chưa thanh toán ?<a href="{{route('getThanhtoan', ['lichdat_id'=>$ld->malichdat])}}" class="text-danger">Nhấn vào đây để thanh toán online</a></p>
 					@else
 					<?php 
 						$delta_hour = (int)$ld->thoigian - $now_hour;
