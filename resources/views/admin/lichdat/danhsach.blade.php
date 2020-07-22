@@ -23,10 +23,12 @@
                                 <th>Tên nhân viên</th>
                                 <th>Tên khách hàng</th>
                                 <th>Tên dịch vụ</th>
+                                <th>Ngày</th>
                                 <th>Thời gian</th>
                                 <th>Tên cửa hàng</th>
-                                <th>Trạng thái</th>
+                                <th>Trạng thái lịch đặt</th>
                                 <th>Hình thức thanh toán đã chọn</th>
+                                <th>Trạng thái thanh toán</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                                 <th>Nhấn để bắt đầu</th>
@@ -41,6 +43,7 @@
                                 <td>{{$ld->nhanvien->user->name}}</td>
                                 <td>{{$ld->tenkhachhang}}</td>
                                 <td>{{$ld->dichvu->tendichvu}}</td>
+                                <td>{{$ld->ngay}}</td>
                                 <td>{{$ld->thoigian}}</td>
                                 <td>{{$ld->cuahang->tencuahang}}</td>
                                 @if($ld->khhuydon == 1)
@@ -50,6 +53,7 @@
                                 @endif
 
                                 <td>{{$ld->thanhtoan == 1 ? 'Thanh toán tại quầy' : 'Thanh toán online'}}</td>
+                                <td>{{$ld->dathanhtoan == 1 ? 'Đã thanh toán' : 'Chưa thanh toán'}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" class="xoa" href="{{URL::to('admin/lichdat/xoa/'.$ld->id)}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->id])}}">Edit</a></td>
 
