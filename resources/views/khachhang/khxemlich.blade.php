@@ -49,7 +49,11 @@
 					@else
 					<?php 
 						$delta_hour = (int)$ld->thoigian - $now_hour;
-						$delta_minute = 60 - $now_minute;
+						$delta_minute = 0;
+						if($now_minute > 0){
+							$delta_hour = $delta_hour - 1;
+							$delta_minute = 60 - $now_minute;
+						}
 						$total_delta_minute = $delta_hour * 60 + $delta_minute;
 					?>
 						@if($ld->ngay == $now && $ld->thoigian < $now_hour)
