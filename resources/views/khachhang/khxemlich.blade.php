@@ -56,8 +56,7 @@
 						}
 						$total_delta_minute = $delta_hour * 60 + $delta_minute;
 						$arr1 = explode('-', $ld->ngay);
-						dd($arr1);
-						$tgianlichdat = Carbon\Carbon::create($arr1[2], $arr1[1], $arr1[0], (int)$ld->thoigian, 0, 0);
+						$tgianlichdat = Carbon\Carbon::create($arr1[0], $arr1[1], $arr1[2], (int)$ld->thoigian, 0, 0);
 						dd($tgianlichdat->isPast());
 					?>
 						@if($ld->ngay == $now && $ld->thoigian <= $now_hour)
