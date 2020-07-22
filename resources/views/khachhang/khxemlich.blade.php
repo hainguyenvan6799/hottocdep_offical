@@ -43,6 +43,7 @@
 						$delta_hour = int($ld->thoigian) - $now_hour;
 						$delta_minute = 60 - $now_minute;
 						$total_delta_minute = $delta_hour * 60 + $delta_minute;
+						dd($total_delta_minute);
 					?>
 						@if($ld->ngay == $now && $ld->thoigian < $now_hour)
 							<p class="text-danger">Bạn đã bị lỡ lịch. Nếu bạn đã thanh toán, vui lòng liên hệ admin để hủy lịch và hoàn tiền.</p>
