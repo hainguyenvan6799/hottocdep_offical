@@ -14,6 +14,7 @@
 	@foreach($lichdat as $ld)
 		{{-- Các lịch đặt kể từ ngày hôm nay và kể từ giờ hiện tại của hệ thống --}}
 		@if($ld->ngay >= $now && $ld->thoigian >= $now_hour)
+		<div class="border border-success rounded p-3 my-3">
 		<h3>{{$ld->tenkhachhang}}</h3>
 
         <p>Ngày: {{date( 'd-m-y' ,strtotime($ld->ngay))}} Thời gian: {{ $ld->thoigian }}</p>
@@ -60,6 +61,7 @@
 				@endif
 
 			@endif
+		</div>
 		@endif
 	@endforeach
 </body>
