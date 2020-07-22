@@ -244,40 +244,48 @@ class lichdatController extends Controller
     }
 
     public function getXoa($id){ // khi ma` admin chọn hủy lịch đặt thì bên phía ng dùng không nhìn thấy, admin vẫn nhìn thấy
-        $lichdat = LichDat::find($id);
-        $lichdat->hienthi = 0;
-        if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
+        $lichdats = LichDat::where('malichdat',$id)->get();
+        foreach($lichdats as $lichdat)
         {
-            $stripe = Stripe::setApiKey('sk_test_KEGrVZIG4Ea4SJ9O6N1jzIhd00keMDnAz1');
+            $lichdat->hienthi = 0;
+            if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
+            {
+                $stripe = Stripe::setApiKey('sk_test_KEGrVZIG4Ea4SJ9O6N1jzIhd00keMDnAz1');
 
-             $refund = \Stripe\Refund::create([
-                'charge' => $lichdat->charge_id,
-                'amount' => 0.8 * $lichdat->dichvu->gia,  // For 10 $
-                'reason' => 'requested_by_customer'
-            ]);
-            $lichdat->dathanhtoan = 0;
-            // $lichdat->charge_id = null;
+                 $refund = \Stripe\Refund::create([
+                    'charge' => $lichdat->charge_id,
+                    'amount' => 0.8 * $lichdat->dichvu->gia,  // For 10 $
+                    'reason' => 'requested_by_customer'
+                ]);
+                $lichdat->dathanhtoan = 0;
+                // $lichdat->charge_id = null;
+            }
         }
-        $lichdat->save();
+        
+
+        LichDat::where('malichdat', $id)->delete();
         return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Xóa lịch đặt thành công.');
     }
 
     public function getSua($id)
     {
-        $lichdat = LichDat::find($id);
+        $lichdats = LichDat::where('malichdat',$id)->get();
         $cuahang = CuaHang::all();
-        return view('admin.lichdat.sua', ['lichdat'=>$lichdat, 'cuahang'=>$cuahang]);
+        return view('admin.lichdat.sua', ['lichdats'=>$lichdats, 'cuahang'=>$cuahang]);
     }
     public function postSua(Request $request, $id)
     {
-        $lichdat = LichDat::find($id);
-        $lichdat->tenkhachhang = $request->txtTen;
-        $lichdat->nhanvien_id = $request->chonnhanvien;
-        $lichdat->dichvu_id = 1;
-        $lichdat->ngay = $request->chon_ngaylamviec;
-        $lichdat->thoigian = $request->chon_khunggio;
-        $lichdat->id_cuahang = $request->chon_cuahang;
-        $lichdat->save();
+        $lichdats = LichDat::where('malichdat',$id)->get();
+        foreach($lichdats as $lichdat){
+            $lichdat->tenkhachhang = $request->txtTen;
+            $lichdat->nhanvien_id = $request->chonnhanvien;
+            $lichdat->dichvu_id = 1;
+            $lichdat->ngay = $request->chon_ngaylamviec;
+            $lichdat->thoigian = $request->chon_khunggio;
+            $lichdat->id_cuahang = $request->chon_cuahang;
+            $lichdat->save();
+        }
+        
         return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Sửa lịch đặt thành công.');
     }
 

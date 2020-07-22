@@ -19,7 +19,7 @@
 
         <p>Ngày: {{date( 'd-m-y' ,strtotime($ld->ngay))}} Thời gian: {{ $ld->thoigian }}</p>
         <p>Dịch vụ: {{$ld->dichvu->tendichvu}}</p>
-        <p>Mã lịch: {{$ld->malichdat}}- Giá: {{$ld->dichvu->gia}}Đ</p>
+        <p>Mã lịch: <span class="text-danger">{{$ld->malichdat}}</span>- Giá: <span class="text-success">{{$ld->dichvu->gia}}Đ</span></p>
 			{{-- Khách hàng chưa xác nhận lịch đặt --}}
 			@if($ld->hienthi == 0)
 				<h3>Chọn hình thức xác nhận lịch đặt</h3>

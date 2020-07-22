@@ -33,6 +33,7 @@
                                     {{session('thongbao')}}
                                 </div>
                             @endif
+                            @foreach($lichdats as $lichdat)
                             <div class="form-group">
                                 <label>Nhập tên khách hàng</label>
                                 <input type="text" class="form-control" name="txtTen" value="{{$lichdat->tenkhachhang}}" />
@@ -61,7 +62,7 @@
                             <div class="form-group" id="chon_khunggio">
 
                             </div>
-
+                            @endforeach
                             <button type="submit" class="btn btn-default">Sửa lịch đặt</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>

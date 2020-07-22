@@ -54,8 +54,8 @@
 
                                 <td>{{$ld->thanhtoan == 1 ? 'Thanh toán tại quầy' : 'Thanh toán online'}}</td>
                                 <td>{{$ld->dathanhtoan == 1 ? 'Đã thanh toán' : 'Chưa thanh toán'}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" class="xoa" href="{{URL::to('admin/lichdat/xoa/'.$ld->id)}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->id])}}">Edit</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" class="xoa" href="{{URL::to('admin/lichdat/xoa/'.$ld->malichdat)}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->malichdat])}}">Edit</a></td>
 
                                 @if($ld->hoanthanhlich == 0 && $ld->khhuydon == null)
                                 <td>

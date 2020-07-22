@@ -107,7 +107,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		echo '<script>alert("Bắt đầu dịch vụ của lịch đặt '.$malichdat.'");
 			window.setTimeout(function(){
             
-            window.location.href="https://hottocdep.herokuapp.com/";
+            window.location.href="https://hottocdep.herokuapp.com/admin/lichdat/danhsach";
         	}, 3000);
 		</script>';
 
