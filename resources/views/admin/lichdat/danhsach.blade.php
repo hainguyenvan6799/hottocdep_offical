@@ -15,7 +15,7 @@
                             {{session('thongbao')}}
                         </div>
                     @endif
-                    
+
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
@@ -71,7 +71,7 @@
                                 @if($ld->hoanthanhlich == 0 && $ld->khhuydon == null)
                                 {{-- <td><a href="{{route('adminhoantatlichdat', ['id_lichdat'=>$ld->id])}}">Nhấn để hoàn tất lịch đặt</a></td> --}}
                                 <td>
-                                <form method="post" action="{{route('adminhoantatlichdat',['id_lichdat'=>$ld->id])}}">
+                                <form method="post" action="{{route('adminhoantatlichdat',['malichdat'=>$ld->malichdat])}}">
                                     {{csrf_field()}}
                                     <input type="radio" name="hinhthucthanhtoan" value="1" required="">Thanh toán tại chỗ<br>
                                     <input type="radio" name="hinhthucthanhtoan" value="2" required="">Thanh toán online<br>
