@@ -419,6 +419,12 @@ Route::get('getKhunggio/{ngay}/{idnv}', 'lichdatController@getKhunggio')->name('
 
 
 Route::get('abctest',function(){
-	$lichdat = LichDat::find(49);
-	dd(str_split((string)$lichdat->id));
+	if(2+3 == 6)
+	{
+		echo 'a';
+	}
+	elseif(2+3 == 5 && 6+4==10)
+	{
+		echo 'b';
+	}
 });
