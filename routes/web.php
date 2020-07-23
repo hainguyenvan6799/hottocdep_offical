@@ -295,6 +295,10 @@ Route::get('resendcodeotplichdat/{malichdat}', function($malichdat){
 			return redirect('formDatLich/'.$malichdat)->with('thongbaotontai', 'Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.');
 
 		}
+		if($ld->thoigian <= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour)
+		{
+			return redirect('formDatLich/'.$malichdat)->with('thongbaotontai', 'Khung thời gian này đã qua, bạn hãy thay đổi khung giờ khác.');
+		}
 		$sdt = $ld->sdt;
 	}
 	$code = SendCode::sendcode($sdt);
@@ -310,6 +314,10 @@ Route::get('resendemaillichdat/{malichdat}', function($malichdat){
 		{
 			return redirect('formDatLich/'.$malichdat)->with('thongbaotontai', 'Khung thời gian này đã có khách đặt, bạn hãy thay đổi khung giờ khác.');
 
+		}
+		if($lichdat->thoigian <= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour)
+		{
+			return redirect('formDatLich/'.$malichdat)->with('thongbaotontai', 'Khung thời gian này đã qua, bạn hãy thay đổi khung giờ khác.');
 		}
 		$data = array(
                 'name'=>$lichdat->tenkhachhang,
