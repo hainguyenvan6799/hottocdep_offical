@@ -20,11 +20,12 @@
         <p>Ngày: {{date( 'd-m-y' ,strtotime($ld->ngay))}} Thời gian: {{ $ld->thoigian }}</p>
         <p>Dịch vụ: {{$ld->dichvu->tendichvu}}</p>
         <p>Mã lịch: <span class="text-danger">{{$ld->malichdat}}</span>- Giá: <span class="text-success">{{$ld->dichvu->gia}}Đ</span></p>
+        <p>Cửa hàng <span class="text-success">{{$ld->cuahang->tencuahang}}</span> - Nhân viên: <span class="text-success">{{$ld->nhanvien->user->name}}</span></p>
 			{{-- Khách hàng chưa xác nhận lịch đặt --}}
 			@if($ld->hienthi == 0)
 				<h3>Chọn hình thức xác nhận lịch đặt</h3>
-			    <a class="btn btn-success" href="resendemaillichdat/{{$ld->malichdat}}">Nhấn vào để xác thực bằng Email</a><br>
-			    <a class="btn btn-success" href="resendcodeotplichdat/{{$ld->malichdat}}">Nhấn vào để xác thực bằng OTP số điện thoại</a>
+			    <p><a class="btn btn-success" href="resendemaillichdat/{{$ld->malichdat}}">Nhấn vào để xác thực bằng Email</a></p>
+			    <p><a class="btn btn-success" href="resendcodeotplichdat/{{$ld->malichdat}}">Nhấn vào để xác thực bằng OTP số điện thoại</a></p>
 			@elseif($ld->hienthi == 1)
 				@if($ld->hoanthanhlich == 1) 
 
