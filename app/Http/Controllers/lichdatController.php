@@ -193,7 +193,7 @@ class lichdatController extends Controller
         $lichdats = LichDat::where('malichdat',$malichdat)->get();
         foreach($lichdats as $lichdat)
         {
-            $lichdat->hienthi = 0;
+            $lichdat->hienthi = 1;
             $lichdat->khhuydon = 1;
             if($lichdat->dathanhtoan == 1 && $lichdat->thanhtoan == 2)
             {
