@@ -53,7 +53,6 @@ class dichvuController extends Controller
         $dichvu->tendichvu_khongdau = utf8tourl($request->txtTen);
         $dichvu->id_loaidichvu = $request->txtloaidichvu;
         $dichvu->mota = $request->txtMota;
-        $dichvu->luotyeuthich = 0;
         if(!$request->hasFile('filehinh'))
         {
             return redirect()->route('dichvu/getDanhsach')->with('loi','Dịch vụ chưa có ảnh đại diện.');
