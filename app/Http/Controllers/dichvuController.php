@@ -85,14 +85,6 @@ class dichvuController extends Controller
 
     public function postSua($id, Request $request)
     {
-        $ktradichvu = Dichvu::where('tendichvu', $request->txtTen)->get();
-        foreach($ktradichvu as $kt)
-        {
-            if($kt->id)
-            {
-                return redirect()->route('dichvu/getThem')->with('loi', 'Tên dịch vụ đã tồn tại.');
-            }
-        }
         $this->validate($request,
             [
                 'txtGia'=>'gt:0|numeric'
