@@ -37,7 +37,7 @@
                                 <td>{{$dv->tendichvu}}</td>
                                 <td>{{$dv->gia}}</td>
                                 <td>{{$dv->mota}}</td>
-                                <td><img src="../public/images/dichvu/{{$dv->anhdaidien}}" style="width: 200px;"></td>
+                                <td><img src="/images/dichvu/{{$dv->anhdaidien}}" style="width: 200px;"></td>
                                 <td>{{$dv->loaidichvu->tenloai}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a class="xoa" style="cursor: pointer;" id="xoa" href="{{URL::to('admin/dichvu/xoa/'.$dv->id)}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{URL::to('admin/dichvu/sua/'.$dv->id)}}">Edit</a></td>
