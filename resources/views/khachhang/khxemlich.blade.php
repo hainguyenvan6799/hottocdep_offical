@@ -77,6 +77,8 @@
 
 			@endif
 		</div>
+		@else
+		<h3>Không có lịch đặt</h3>
 		@endif
 	@endforeach
 </body>
