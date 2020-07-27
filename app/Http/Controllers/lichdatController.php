@@ -128,7 +128,7 @@ class lichdatController extends Controller
         //     echo '<a class="btn btn-danger khhuylich" href="khachhang/huylich/'.$ld->id.'">Hủy</a>';
         //     echo '</div>';
         // }
-        $now = Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
         $arr = LichDat::where('sdt', $sdt)->where('ngay', '>', $now)->get()->toArray();
         return view('khachhang.khxemlich', ['lichdat'=>$lichdat, 'arr'=>$arr]);
     }
