@@ -77,10 +77,12 @@
 
 			@endif
 		</div>
-		@else
-		<h3>Không có lịch đặt</h3>
 		@endif
 	@endforeach
+
+	@if(empty($arr))
+		<h3>Không có lịch đặt</h3>
+	@endif
 </body>
 <script type="text/javascript">
 	
