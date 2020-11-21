@@ -386,7 +386,7 @@ class lichdatController extends Controller
         }
     }
     public function postThanhtoan($lichdat_id, Request $request){
-        Stripe::setApiKey('sk_test_KEGrVZIG4Ea4SJ9O6N1jzIhd00keMDnAz1');
+        Stripe::setApiKey('sk_test_51H2zayKJfUIAhVaZdJxLEE9mzDnJY1wQTMkaxOSwg3zFWPRdHfWsqyqOtcBztBLY2uE8nLfncekbVGTbLDYDP0fQ00PmvZo2nt');
         
             $customer = Customer::create(array(
                 "email"=>$request->email,//sesion()->get('email');
